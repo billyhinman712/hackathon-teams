@@ -25,4 +25,18 @@ router.get('/:name', function(req, res) {
   res.render('teams/show', { team: team });
 });
 
+router.get('/:name/edit', function(req,res){
+	var team = teamService.getTeam(req.params.name);
+
+	res.render('teams/edit', { team: team});
+});
+
+router.put('/', function(req, res){
+	res.send('update route');
+});
+
+router.delete('/', function(req, res){
+	res.send('delete route');
+});
+
 module.exports = router;
