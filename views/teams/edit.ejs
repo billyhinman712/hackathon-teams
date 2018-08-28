@@ -1,6 +1,6 @@
 <div>
   <h2>Edit Team</h2>
-  <form action="/teams" method="PUT" id="edit-form">
+  <form action="/teams/<%= team.name %>" method="PUT" id="edit-form">
     <div class="form-group">
       <label for="teamName">Team Name</label>
       <input type="text" class="form-control" name="name" id="teamName" value="<%= team.name %>">

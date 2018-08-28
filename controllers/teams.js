@@ -6,6 +6,7 @@ var router = express.Router();
 router.get('/', function(req, res) {
   var teams = teamService.allTeams();
   res.render('teams/index', { teams: teams });
+  console.log(teams);
 });
 
 router.post('/', function(req, res) {
@@ -31,12 +32,18 @@ router.get('/:name/edit', function(req,res){
 	res.render('teams/edit', { team: team});
 });
 
-router.put('/', function(req, res){
-	res.send('update route');
+router.put('/:name', function(req, res){
+    console.log('made it to PUT /:name route');
+    console.log(req.params);
+    console.log(req.body);
+    teamService.editTeam(req.params.name, req.body);
+    res.send('success');
 });
 
-router.delete('/', function(req, res){
-	res.send('delete route');
+router.delete('/:name', function(req, res){
+  console.log(req.params.name);
+	teamService.deleteTeam(req.params.name);
+  res.send('success');
 });
 
 module.exports = router;
